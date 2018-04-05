@@ -1,0 +1,160 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: Ubuntu Mono;
+	src: url("UbuntuMono-R.ttf");
+}
+
+
+h1{
+	font: bold 28px;
+	margin-bottom: 20px;
+}
+
+h2{
+	font: bold 14px;
+}
+
+
+#page_wrapper{
+	display: flex;
+	flex-flow: row wrap;
+	margin-right: 20%;
+	margin-left: 20%;
+}
+
+body {
+	background-color: #ffee8e;
+}
+
+header, footer, aside, nav, article{
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 10px;
+	margin: 10px;
+	padding: 20px;
+	border-style: solid;
+	border-width: 2px;
+}
+
+article{
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 50px;
+	border-style: solid;
+	border-width: 2px;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	border-style: ridge;
+	border-width: 10px;
+}
+
+a:link {
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	color: white;
+	background-color: silver;
+	padding: 5px;
+	margin: 10px;
+	outline-style: outset;
+	outline-color: silver;
+	outline-width: 5px;
+}
+
+a:visited {
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	color: white;
+	background-color: silver;
+	padding: 5px;
+	margin: 10px;
+	outline-style: outset;
+	outline-color: silver;
+	outline-width: 5px;
+}
+
+a:hover {
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	color: white;
+	background-color: silver;
+	padding: 5px;
+	margin: 10px;
+	outline-style: inset;
+	outline-color: silver;
+	outline-width: 5px;
+}
+
+a:active {
+	text-align: center;
+	display: block;
+	text-decoration: none;
+	color: #5C5C5C;
+	background-color: silver;
+	padding: 5px;
+	margin: 10px;
+	outline-style: inset;
+	outline-color: gray;
+	outline-width: 5px;
+}
+
+textarea {
+	max-width:90% !important;
+	min-width:30% !important;
+}
+
+ul {
+	margin: 20px;
+}
+
+#nav_bar{
+	flex: 1 1 150px;
+	text-align: center;
+	width: 100%;
+	margin-right:5px;
+}
+
+#nav_bar li{
+	display:inline-block;
+	list-style: none;
+	padding: 0px 0;
+	margin: 0 5px;
+	width: 100%;
+}
+
+#top_header{
+	order: 2;
+	flex-wrap: nowrap;
+	flex: 1;
+	font: bold;
+	font-size: 6vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#main_section{
+	order: 3;
+	min_height: 250px;
+	flex: 0 1 100%;
+}
+
+#side_news{
+	order: 4;
+	flex: 0 1 200px;
+}
+
+#footer_info{
+	order: 5;
+	height: 100px;
+	flex: 0 1 100%;
+}
