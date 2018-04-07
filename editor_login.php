@@ -10,6 +10,7 @@
 	</head>
 
 	<body>
+		<div id="page_wrapper">
 		<?php readfile("navigation.html"); ?>
 
 		<section id="main_section">
@@ -49,5 +50,6 @@
 					name = "login">Login</button>
 			</article>
 		</section>
+		</div>
 	</body>
 </html>
