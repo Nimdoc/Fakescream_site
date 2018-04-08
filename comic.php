@@ -13,8 +13,9 @@
 		<?php readfile("navigation.html"); ?>
 		<section id="main_section">
 			<article>
+				<ul id="comic_list">
 				<?php
-		
+						
 				// Create connection
 				$conn = new mysqli($servername, $username, $password, $dbname);
 				// Check connection
@@ -46,14 +47,14 @@
 
 					while($stmt->fetch()) 
 					{
-						echo "<h2>" . $title . "</h2><br>";
-						echo "<h4>Created by: " . $author . "</h4><br>";
-						echo "<img src=\"" . $path . "/" . $filename. "\"" . "width='512'>" . " <br>";
+						echo "<li>";
+						echo "<a href=\"/comic_single.php?comic_id=" . $id . "\">" . $title . "</a>";
 					}
 				}
 				$stmt->close();
 				$conn->close(); 
 				?>
+				</ul>
 			</article>
 		</section>
 		</div>

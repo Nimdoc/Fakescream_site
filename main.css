@@ -5,6 +5,9 @@
 	src: url("UbuntuMono-R.ttf");
 }
 
+li {
+	list-style: none;
+}
 
 h1{
 	font: bold 28px;
@@ -129,6 +132,17 @@ ul {
 	padding: 0px 0;
 	margin: 0 5px;
 	width: 100%;
+}
+
+#comic_list li{
+	list-style: none;
+	margin-bottom: 20px;
+}
+
+#transition li{
+	display:inline-block;
+	list-style: none;
+	width: 50%;
 }
 
 #top_header{
