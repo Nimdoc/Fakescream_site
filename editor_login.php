@@ -7,6 +7,10 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="main.css">
+
+		<?php
+                        include "database.php";
+                ?>
 	</head>
 
 	<body>
@@ -15,14 +19,40 @@
 
 		<section id="main_section">
 			<?php
+				// Create connection
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                // Check connection
+                                if ($conn->connect_error)
+                                {
+                                        die("Connection failed: " . $conn->connect_error);
+                                }
+
+
 				$msg = '';
 				
 				if(isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))
-					if($_POST['username'] == 'user' && $_POST['password'] == 'abc')
+				{
+					if($stmt = $conn->prepare("SELECT * FROM users WHERE user = ?"))
+					{
+						$stmt->bind_param("s", $_POST['username']);
+
+						$stmt->execute();
+
+	                                        $stmt->bind_result($id, $user, $salt, $hash);
+					
+						if($stmt->fetch())
+						{
+							$data = $salt . $_POST['password'];
+
+							$hash_pass = hash('sha512', $data);
+						}
+					}
+					
+					if($_POST['username'] == $user && $hash == $hash_pass)
 					{
 						$_SESSION['valid'] = true;
 						$_SESSION['timeout'] = time();
-						$_SESSION['username'] = 'user';
+						$_SESSION['username'] = $user;
 						
 						echo "<article>";	
 						echo 'Valid!';
@@ -32,8 +62,9 @@
 					}
 					else // Invalid username
 					{
-						$msg = 'Wrong username.';
+						$msg = 'Wrong username or password.';
 					}
+				}
 			?>
 
 			<article>

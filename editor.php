@@ -19,8 +19,10 @@
 		<?php readfile("navigation.html"); ?>
 
 		<section id="main_section">
+
 			<article>
-				Hello.
+				<h1>Fakescream Editor. Welcome.</h1>
+				<a href="/editor_logout.php">LOGOUT</a>
 
 				<ul>
 					<li><a href="/editor_comic.php">Sumbit Comic</a></li>

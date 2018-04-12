@@ -35,7 +35,7 @@
 
 					if ($stmt = $conn->prepare("INSERT INTO jokes (joke, author) VALUES (?, ?)")) 
 					{
-						$user = "User";
+						$user = $_POST['username'];
 
 						$stmt->bind_param("ss", $_POST["joke"], $user);
 
