@@ -17,7 +17,8 @@
         <body>
 		<div id="page_wrapper">
 		<?php readfile("navigation.html"); ?>
-
+		
+                <section id="main_section">
 		<article>
 			<a href="/editor.php">BACK</a>
 			<form action="editor_comic_upload.php" method="post" enctype="multipart/form-data">
@@ -27,6 +28,7 @@
 				<input type="submit" value="Upload Image" name="submit">
 			</form>
 		</article>
+		</section>
 		</div>
         </body>
 </html>
