@@ -28,6 +28,7 @@
 				<ul>
 					<li><a href="/editor_comic.php">Sumbit Comic</a></li>
 					<li><a href="/editor_joke.php">Sumbit Joke</a></li>
+					<li><a href="/editor_video.php">Sumbit Video</a></li>
 				</ul>
 			</article>
 		</section>
