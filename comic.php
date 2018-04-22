@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="main.css">
+		<link rel="icon type="image/png" href="/Public/favicon.png">
 		<?php
 			include "database.php";
 		?>

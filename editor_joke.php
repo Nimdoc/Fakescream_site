@@ -12,6 +12,7 @@
 <html>
         <head>
                 <link rel="stylesheet" type="text/css" href="main.css">
+		<link rel="icon type="image/png" href="/Public/favicon.png">
         </head>
 
         <body>

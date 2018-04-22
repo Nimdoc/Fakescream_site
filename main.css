@@ -22,8 +22,8 @@ h2{
 #page_wrapper{
 	display: flex;
 	flex-flow: row wrap;
-	margin-right: 20%;
-	margin-left: 20%;
+	max-width: 800px;
+	margin: auto;
 }
 
 body {
@@ -145,12 +145,16 @@ ul {
 	width: 50%;
 }
 
+#inner_header{
+	font-size: 72px;
+	width: 100%;
+}
+
 #top_header{
 	order: 2;
 	flex-wrap: nowrap;
 	flex: 1;
 	font: bold;
-	font-size: 6vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
