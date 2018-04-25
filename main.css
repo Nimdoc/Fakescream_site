@@ -119,6 +119,11 @@ ul {
 	margin: 20px;
 }
 
+video{
+	width: 100% !important;
+	height: auto; !important;
+}
+
 #nav_bar{
 	flex: 1 1 150px;
 	text-align: center;

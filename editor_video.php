@@ -23,10 +23,10 @@
 		<article>
 			<a href="/editor.php">BACK</a>
 			<form action="editor_video_upload.php" method="post" enctype="multipart/form-data">
-				Select image to upload:
+				Select video to upload:
 				<input type="text" name="title" id="title">
 				<input type="file" name="fileToUpload" id="fileToUpload">
-				<input type="submit" value="Upload Image" name="submit">
+				<input type="submit" value="Upload Video" name="submit">
 			</form>
 		</article>
 		</section>
