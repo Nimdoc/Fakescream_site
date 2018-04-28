@@ -33,24 +33,47 @@
 					{
 						die("Connection failed: " . $conn->connect_error);
 					}
-
-					if ($stmt = $conn->prepare("INSERT INTO jokes (joke, author) VALUES (?, ?)")) 
+	
+					if(!empty($_POST['password']))
 					{
 						$user = $_SESSION['username'];
 
-						$stmt->bind_param("ss", $_POST["joke"], $user);
+						if($stmt = $conn->prepare("SELECT * FROM users WHERE user = ?"))	
+						{
+							$stmt->bind_param("s", $_SESSION['username']);
 
-						$stmt->execute();
+							$stmt->execute();
 
-						echo "Processing submission.";
+							$stmt->bind_result($id, $db_user, $salt, $hash);
 
+							$stmt->fetch();	
+						}
+						else
+						{
+							echo "Can't get salt.";
+						}
+
+						$stmt->close();
+
+						if ($stmt = $conn->prepare("UPDATE users SET hash = ? WHERE user = ?")) 
+						{
+							$data = $salt . $_POST['password'];
+
+							$hash_pass = hash('sha512', $data);
+
+							$stmt->bind_param("ss", $hash_pass, $_SESSION['username']);
+
+							$stmt->execute();
+
+							echo "Processing password";
+						}
+						else
+						{
+							echo "Unsuccessful.";
+						}
 					}
-					else
-					{
-						echo "Cannot prepare statement.";
-					}
-						echo "<br><br>Redirecting in 5 seconds...";
-						header( "refresh:5;url=editor_joke.php" );
+					echo "<br><br>Redirecting in 5 seconds...";
+					header( "refresh:5;url=editor.php" );
 				?>
                         </article>
                 </section>

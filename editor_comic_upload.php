@@ -91,11 +91,13 @@ if($_SESSION['valid'] != true)
 					{
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_filename))
 					{
-						if ($stmt = $conn->prepare("INSERT INTO comics (title, author, path, filename) VALUES (?, \"User\", \"Comics\", ?)"))
+						if ($stmt = $conn->prepare("INSERT INTO comics (title, author, path, filename) VALUES (?, \"?\", \"Comics\", ?)"))
 						{
-							if(!$stmt->bind_param("ss", $db_title, $db_name))
+							if(!$stmt->bind_param("sss", $db_title, $db_user, $db_name))
 								echo "Error.";
 
+
+							$db_user = $_SESSION['username'];
 							$db_title = $_POST["title"];
 							$db_name = $cur_time . "." . $ext;
 						
@@ -115,12 +117,14 @@ if($_SESSION['valid'] != true)
 					{
 						echo "Sorry, there was an error uploading your file.";
 					}
-					echo "<br><br>Redirecting in 5 seconds...";
-					header( "refresh:5;url=editor_comic.php" );
 					}
+				echo "<br><br>Redirecting in 5 seconds...";
+				header( "refresh:5;url=editor_comic.php" );
 				?>
 
 		</article>
 		</div>
 	</body>
 </html>
+
+
