@@ -91,10 +91,10 @@ if($_SESSION['valid'] != true)
 					{
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_filename))
 					{
-						if ($stmt = $conn->prepare("INSERT INTO comics (title, author, path, filename) VALUES (?, \"?\", \"Comics\", ?)"))
+						if ($stmt = $conn->prepare("INSERT INTO comics (title, author, path, filename) VALUES (?, ?, \"Comics\", ?)"))
 						{
 							if(!$stmt->bind_param("sss", $db_title, $db_user, $db_name))
-								echo "Error.";
+								echo " Parameter Bind Error. <br>";
 
 
 							$db_user = $_SESSION['username'];
@@ -102,7 +102,7 @@ if($_SESSION['valid'] != true)
 							$db_name = $cur_time . "." . $ext;
 						
 							if(!$stmt->execute())
-								echo "Error.";
+								echo "Statement Execution Error. <br>";
 
 							echo $_POST["title"];
 							echo "<br>";
