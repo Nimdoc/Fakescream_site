@@ -46,11 +46,46 @@
 
 						while ($stmt->fetch()) 
 						{
-							echo "\"" . $joke . "\" -" . $author . "<br><br>";
+							echo "<div id=\"joke\">" . $joke . "<br><br>-" . $author . "</div><br><br>";
 						}
                                         }
 
 					$stmt->close();
+
+					if ($stmt = $conn->prepare("SELECT * FROM jokes WHERE id < ?"))
+                                        {
+						$prev_id = ($_GET["page"]) * 10;
+
+						$stmt->bind_param("i", $prev_id);
+						
+						$stmt-> execute();
+
+						$stmt->bind_result($id, $joke, $author);
+
+						if($stmt->fetch())
+						{
+							echo "<li><a href=\"/jokes.php?page=" . ($_GET["page"] - 1) . "\">PREV</a></li>";
+						}
+                                        }
+
+					$stmt->close();
+
+					if ($stmt = $conn->prepare("SELECT * FROM jokes WHERE id > ?"))
+                                        {
+						$next_id = ($_GET["page"] + 1) * 10;
+
+						$stmt->bind_param("i", $next_id);
+
+						$stmt-> execute();
+
+						$stmt->bind_result($id, $joke, $author);
+
+						if($stmt->fetch())
+						{
+							echo "<li><a href=\"/jokes.php?page=" . ($_GET["page"] + 1) . "\">NEXT</a></li>";
+						}
+                                        }
+
 					$conn->close();
                                 ?>
                         </article>

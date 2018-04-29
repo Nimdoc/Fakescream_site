@@ -22,6 +22,7 @@
 
                 <section id="main_section">
                         <article>
+				140 Character limit right now, keep that in mind. Check character count before submitting. Will eventually change it. Newlines don't work, make your jokes work in one sentence.
 				<a href="/editor.php">BACK</a>
                         	<form action="editor_joke_submit.php" method="post" enctype="multipart/form-data">
                                 Input Joke:<br>

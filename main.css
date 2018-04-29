@@ -58,6 +58,12 @@ img {
 	border-width: 10px;
 }
 
+#joke {
+	background-color: silver;	
+	border-radius: 5px;
+	padding: 20px;
+}
+
 a:link {
 	text-align: center;
 	display: block;
