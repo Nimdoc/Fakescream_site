@@ -15,7 +15,7 @@
 
 		<section id="main_section">
 		<article>
-			<h2>Latest Comic</h2><br>
+			<h2>Latest Joke</h2><br>
 			<?php
 
                                 // Create connection
@@ -25,6 +25,19 @@
                                 {
                                         die("Connection failed: " . $conn->connect_error);
                                 }
+
+				$sql = "SELECT * FROM jokes ORDER BY id DESC LIMIT 1";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) 
+				{
+					$row = $result->fetch_assoc();
+					echo "<div id=\"joke\">" . $row["joke"] . "<br><br>-" . $row["author"] . "</div>" . "<br>";
+				}
+			?>
+
+			<h2>Latest Comic</h2><br>
+			<?php
 
 				$sql = "SELECT * FROM comics ORDER BY id DESC LIMIT 1";
 				$result = $conn->query($sql);
@@ -37,7 +50,7 @@
 
 				$last = $row["id"] - 1;
 
-				echo "<li><a href=\"/comic_single.php?comic_id=" . $last . "\">PREVIOUS</a></li>";
+				echo "<li><a href=\"/comic_single.php?comic_id=" . $last . "\">PREVIOUS COMIC</a></li>";
 
                                 $conn->close();
 			?>
