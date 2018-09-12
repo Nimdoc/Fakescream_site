@@ -187,3 +187,20 @@ video{
 	height: 100px;
 	flex: 0 1 100%;
 }
+
+@media only screen and (max-width: 600px) {	
+	
+	 #page_wrapper{
+	 display: flex;
+	 flex-flow: row wrap;
+	 margin: 2px%;
+  }
+	
+	 #nav_bar{
+	 order: 3;
+	 flex: 1 1 150px;
+	 text-align: center;
+	 width: 100%;
+	 margin-right:5px;
+  }
+}
