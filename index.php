@@ -45,6 +45,8 @@
 				if ($result->num_rows > 0) 
 				{
 					$row = $result->fetch_assoc();
+					echo "<h3>" . $row["title"] . "</h3><br>";
+					echo "<h4>Created by: " . $row["author"] . "</h4><br>";
 					echo "<img src=\"" . $row["path"] . "/" . $row["filename"]. "\"" . "width='512'>" . "<br>";
 				}
 
