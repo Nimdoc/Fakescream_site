@@ -25,19 +25,21 @@
 					die("Connection failed: " . $conn->connect_error);
 				} 	
 
-
+				// Get the current page to load
 				if($_GET["page"])
 				{
 					$page = $_GET["page"];
 				}
-				else
+				else // No page set, default to 0
 				{
 					$page = 0;
 				}
 
+				// Calculate the comics to load
 				$pg_lower = 10 * $page;
                                 $pg_upper = (10 * $page) + 10;
 				
+				// Query the database
 				if($stmt = $conn->prepare("SELECT * FROM comics WHERE id > ? and id <= ?"))
 				{
 					$stmt->bind_param("ii", $pg_lower, $pg_upper);
@@ -46,6 +48,7 @@
 
 					$stmt->bind_result($id, $title, $author, $path, $filename);					
 
+					// Print out the comics
 					while($stmt->fetch()) 
 					{
 						echo "<li>";

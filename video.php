@@ -34,10 +34,12 @@
 				{
 					$page = 0;
 				}
-
+		
+				// Calculate video page urls
 				$pg_lower = 10 * $page;
                                 $pg_upper = (10 * $page) + 10;
 				
+				// Get the video information from DB
 				if($stmt = $conn->prepare("SELECT * FROM videos WHERE id > ? and id <= ?"))
 				{
 					$stmt->bind_param("ii", $pg_lower, $pg_upper);
@@ -46,6 +48,7 @@
 
 					$stmt->bind_result($id, $title, $author, $path, $filename);					
 
+					// Print out the video links
 					while($stmt->fetch()) 
 					{
 						echo "<li>";

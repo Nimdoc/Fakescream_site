@@ -33,11 +33,13 @@
 					{
 						die("Connection failed: " . $conn->connect_error);
 					}
-	
+					
+					// Check if password has been submitted	
 					if(!empty($_POST['password']))
 					{
 						$user = $_SESSION['username'];
 
+						// Get the users information from the database
 						if($stmt = $conn->prepare("SELECT * FROM users WHERE user = ?"))	
 						{
 							$stmt->bind_param("s", $_SESSION['username']);
@@ -55,6 +57,7 @@
 
 						$stmt->close();
 
+						// Process the new password into the database
 						if ($stmt = $conn->prepare("UPDATE users SET hash = ? WHERE user = ?")) 
 						{
 							$data = $salt . $_POST['password'];
@@ -67,7 +70,7 @@
 
 							echo "Processing password";
 						}
-						else
+						else // Error
 						{
 							echo "Unsuccessful.";
 						}

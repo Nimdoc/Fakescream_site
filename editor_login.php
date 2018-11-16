@@ -29,9 +29,12 @@
 
 
 				$msg = '';
-				
+			
+
+				// Check if the required fields have information	
 				if(isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))
 				{
+					// Get the users information
 					if($stmt = $conn->prepare("SELECT * FROM users WHERE user = ?"))
 					{
 						$stmt->bind_param("s", $_POST['username']);
@@ -42,12 +45,15 @@
 					
 						if($stmt->fetch())
 						{
+							// Hash the password with the salt
 							$data = $salt . $_POST['password'];
 
 							$hash_pass = hash('sha512', $data);
 						}
 					}
-					
+				
+
+					// Check if the hashes match, if so set the session variables	
 					if($_POST['username'] == $user && $hash == $hash_pass)
 					{
 						$_SESSION['valid'] = true;

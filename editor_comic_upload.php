@@ -49,7 +49,7 @@ if($_SESSION['valid'] != true)
 						die("Connection failed: " . $conn->connect_error);
 					}
 
-
+					// Check if file is an image.
 					$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 					if($check !== false)
 					{
@@ -89,8 +89,10 @@ if($_SESSION['valid'] != true)
 					}
 					else
 					{
+					// Move the file from tmp to the comic directory
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_filename))
 					{
+						// Put the comic into the database
 						if ($stmt = $conn->prepare("INSERT INTO comics (title, author, path, filename) VALUES (?, ?, \"Comics\", ?)"))
 						{
 							if(!$stmt->bind_param("sss", $db_title, $db_user, $db_name))

@@ -52,6 +52,7 @@
 						echo "</video>";
 					}
 
+					// Calculate previous video
 					$transition = $video_id - 1;
 
 					$stmt->bind_param("i", $transition);
@@ -62,11 +63,13 @@
 
 					echo "<ul id=\"transition\">";
 
+					// Print previous video url if it exists
 					if($stmt->fetch())
 					{
 						echo "<li><a href=\"/video_single.php?video_id=" . $id . "\">PREVIOUS</a></li>";
 					}
 
+					// Calculate next video
 					$transition = $video_id + 1;
 
 					$stmt->bind_param("i", $transition);
@@ -75,6 +78,7 @@
 
 					$stmt->bind_result($id, $title, $author, $path, $filename);
 
+					// Print out next video url if it exists
 					if($stmt->fetch())
 					{
 						echo "<li><a href=\"/video_single.php?video_id=" . $id . "\">NEXT</a></li>";

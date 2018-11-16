@@ -34,6 +34,7 @@
 						die("Connection failed: " . $conn->connect_error);
 					}
 
+					// Insert the joke into the database.
 					if ($stmt = $conn->prepare("INSERT INTO jokes (joke, author) VALUES (?, ?)")) 
 					{
 						$user = $_SESSION['username'];
@@ -45,7 +46,7 @@
 						echo "Processing submission.";
 
 					}
-					else
+					else // DB error.
 					{
 						echo "Cannot prepare statement.";
 					}

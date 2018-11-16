@@ -72,10 +72,12 @@ if($_SESSION['valid'] != true)
 						echo "Sorry, your file was not uploaded.";
 						// if everything is ok, try to upload file
 					}
-					else
+					else // Upload good!
 					{
+					// Move the file to the videos directory
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_filename))
 					{
+						// Insert video information into database
 						if ($stmt = $conn->prepare("INSERT INTO videos (title, author, path, filename) VALUES (?, \"?\", \"Videos\", ?)"))
 						{
 							if(!$stmt->bind_param("sss", $db_title, $db_user, $db_name))
@@ -97,7 +99,7 @@ if($_SESSION['valid'] != true)
 							echo "Database error";
 						} 
 					}
-					else
+					else // Error
 					{
 						echo "Sorry, there was an error uploading your file.";
 					}
